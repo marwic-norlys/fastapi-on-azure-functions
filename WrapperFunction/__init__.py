@@ -1,7 +1,8 @@
 import azure.functions as func
 import fastapi
-from .incidents import router as incidents_router
-from .prices import router as prices_router  # Import the prices router
+from .incidents import router as incidents_router # Import the prices router
+from .prices import router as prices_router 
+from .customer import router as customer_router  
 
 app = fastapi.FastAPI(
     title="Chatbot Wrapper API",
@@ -14,16 +15,5 @@ app.include_router(incidents_router)
 # Include the prices router
 app.include_router(prices_router)
 
-
-# @app.get("/sample")
-# async def index():
-#     return {
-#         "info": "Try /hello/Shivani for parameterized route.",
-#     }
-
-
-# @app.get("/hello/{name}")
-# async def get_name(name: str):
-#     return {
-#         "name": name,
-#     }
+# Include the prices router
+app.include_router(customer_router)
