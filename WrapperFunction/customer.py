@@ -51,8 +51,8 @@ security = HTTPBasic()
 load_dotenv()
 
 def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)):
-    correct_username = secrets.compare_digest(credentials.username, os.getenv('USERNAME1'))
-    correct_password = secrets.compare_digest(credentials.password, os.getenv('PASSWORD1'))
+    correct_username = secrets.compare_digest(credentials.username, os.getenv('USERNAME2'))
+    correct_password = secrets.compare_digest(credentials.password, os.getenv('PASSWORD2'))
     if not (correct_username and correct_password):
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
