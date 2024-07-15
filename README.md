@@ -1,4 +1,4 @@
-# Bot Wrapper API
+# Bot Wrapper API template
 
 FastAPI på Azure Functions til Bot Wrapper API.
 
