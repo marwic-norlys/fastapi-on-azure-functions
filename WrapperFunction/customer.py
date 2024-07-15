@@ -15,7 +15,7 @@ class Customer(BaseModel):
     customerDar: str
 
 def init_db():
-    conn = sqlite3.connect('customer.db')
+    conn = sqlite3.connect('local.db')
     c = conn.cursor()
 
     # Create customers table
@@ -65,7 +65,7 @@ def authenticate_user(credentials: HTTPBasicCredentials = Depends(security)):
 # Route 1
 @router.post("/customer", tags=["Genkendelse af telefonnummer"])
 async def create_customer(customer: Customer, username: str = Depends(authenticate_user)):
-    conn = sqlite3.connect('customer.db')
+    conn = sqlite3.connect('local.db')
     c = conn.cursor()
     c.execute('SELECT phone FROM customers WHERE phone = ?', (customer.phone,))
     existing_customer = c.fetchone()
@@ -87,7 +87,7 @@ async def create_customer(customer: Customer, username: str = Depends(authentica
 # Route 2
 @router.get("/customers/{phone}", tags=["Genkendelse af telefonnummer"], status_code=status.HTTP_200_OK)
 async def get_customer(phone: int, username: str = Depends(authenticate_user)):
-    conn = sqlite3.connect('customer.db')
+    conn = sqlite3.connect('local.db')
     c = conn.cursor()
     c.execute('SELECT customerId, customerType, customerDar, timestamp FROM customers WHERE phone = ?', (phone,))
     customer = c.fetchone()
@@ -117,7 +117,7 @@ async def lookup_phone(phone: int, username: str = Depends(authenticate_user)):
     data = response.json()
     result = []
     
-    conn = sqlite3.connect('customer.db')
+    conn = sqlite3.connect('local.db')
     c = conn.cursor()
     for item in data:
         subscriber = item.get("subscriber", {})
