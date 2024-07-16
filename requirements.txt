@@ -2,3 +2,7 @@ azure-functions>=1.12.0
 fastapi
 httpx
 pydantic
+
+## Added july 2024
+python-dotenv
+requests
