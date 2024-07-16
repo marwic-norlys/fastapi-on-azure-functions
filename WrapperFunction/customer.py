@@ -199,7 +199,7 @@ async def lookup_phone(phone: int, username: str = Depends(authenticate_user)):
                     # Handle a bad response
                     raise HTTPException(
                         status_code=api_response.status_code,
-                        detail=f"No kategori B data {api_url}. Status code: {api_response.status_code}"
+                        detail=f"No kategori B result from dawa."
                     )
                     
                 result.append(record)
