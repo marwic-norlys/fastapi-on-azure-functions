@@ -1,12 +1,12 @@
 import azure.functions as func
 import fastapi
-from .incidents import router as incidents_router # Import the prices router
+from .incidents import router as incidents_router
 #from .prices import router as prices_router 
 from .customer import router as customer_router
 
 app = fastapi.FastAPI(
     title="Bot Wrapper API",
-    description="Dette API fungerer som en wrapper for flere services."
+    description="Dette API fungerer som en wrapper."
 )
 
 # Include the incidents router
